@@ -28,19 +28,26 @@
             </div>
 
             @auth
-                <div>
-                    <a href="">Post a job</a>
+                <div class="space-x-6 font-bold flex">
+                    <a href="/jobs/create">Post a job</a>
+
+                    <form action="/logout" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button  class="font-bold">Logout</button>
+                    </form>
+
                 </div>
             @endauth
 
             @guest
-            <div class="space-x-6 font-bold">
-                <a href="/login">Sign In</a>
-                <a href="/register">Sign Up</a>
-            </div>
+                <div class="space-x-6 font-bold">
+                    <a href="/login">Sign In</a>
+                    <a href="/register">Sign Up</a>
+                </div>
             @endguest
         </nav>
-        <main class="mt-10 max-w-[986px]">
+        <main class="mt-10 max-w-[986px] mx-auto">
             {{ $slot }}
         </main>
     </div>
